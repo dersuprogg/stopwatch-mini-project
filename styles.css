@@ -25,6 +25,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-family: "DM Sans", sans-serif;
+  background-color: var(--dark-gray-color);
 }
 img,
 picture,
@@ -52,4 +53,20 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+.btn {
+  border: 1px solid var(--border-color);
+  font-size: 1.6rem;
+  background-color: var(--medium-gray-color);
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+  color: var(--light-text-color);
+  border-radius: 0.2em;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--light-gray-color);
+  cursor: pointer;
 }
