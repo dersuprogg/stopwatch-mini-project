@@ -6,16 +6,26 @@ const resetBtn = document.querySelector(".btn-reset");
 const minutesEl = document.querySelector(".minutes");
 const secondsEl = document.querySelector(".seconds");
 const millisecondsEl = document.querySelector(".milliseconds");
+const display = document.querySelector(".display");
 
 let minutes = 0;
 let seconds = 0;
 let milliseconds = 0;
 
+function makePad(str, pad, length = 2) {
+  while (str.length !== length) {
+    str = pad + str;
+  }
+  return str;
+}
+
 startBtn.addEventListener("click", () => {
+  display.classList.add("time-slip");
   setInterval(() => {
     milliseconds += 1;
-    millisecondsEl.textContent = milliseconds;
-    if (milliseconds > 100) {
+    millisecondsEl.textContent =
+      milliseconds <= 9 ? "0" + milliseconds : milliseconds;
+    if (milliseconds >= 99) {
       milliseconds = 0;
       seconds += 1;
     }
@@ -25,7 +35,7 @@ startBtn.addEventListener("click", () => {
       minutes += 1;
     }
 
-    secondsEl.textContent = seconds;
-    minutesEl.textContent = minutes;
+    secondsEl.textContent = seconds <= 9 ? "0" + seconds : seconds;
+    minutesEl.textContent = minutes <= 9 ? "0" + minutes : minutes;
   }, 10);
 });
