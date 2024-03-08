@@ -12,6 +12,13 @@ let minutes = 0;
 let seconds = 0;
 let milliseconds = 0;
 
+function makePad(str, pad, length = 2) {
+  while (str.length !== length) {
+    str = pad + str;
+  }
+  return str;
+}
+
 startBtn.addEventListener("click", () => {
   display.classList.add("time-slip");
   setInterval(() => {
