@@ -7,6 +7,7 @@ const minutesEl = document.querySelector(".minutes");
 const secondsEl = document.querySelector(".seconds");
 const millisecondsEl = document.querySelector(".milliseconds");
 const display = document.querySelector(".display");
+const lapsUl = document.querySelector(".laps");
 
 let minutes = 0;
 let seconds = 0;
@@ -39,8 +40,19 @@ startBtn.addEventListener("click", () => {
     minutesEl.textContent = minutes <= 9 ? "0" + minutes : minutes;
   }, 10);
 
-  stopBtn.addEventListener("click", () => {
-    clearInterval(intervalId);
-    display.classList.remove("time-slip");
-  });
+  stopBtn.addEventListener(
+    "click",
+    () => {
+      clearInterval(intervalId);
+      display.classList.remove("time-slip");
+      const lap = document.createElement("li");
+      const lapSeconds = seconds <= 9 ? "0" + seconds : seconds;
+      const lapMinutes = minutes <= 9 ? "0" + minutes : minutes;
+      const lapMilliseconds =
+        milliseconds <= 9 ? "0" + milliseconds : milliseconds;
+      lap.textContent = `${lapMinutes} : ${lapSeconds},${lapMilliseconds}`;
+      lapsUl.append(lap);
+    },
+    { once: true }
+  );
 });
