@@ -21,7 +21,7 @@ function makePad(str, pad, length = 2) {
 
 startBtn.addEventListener("click", () => {
   display.classList.add("time-slip");
-  setInterval(() => {
+  const intervalId = setInterval(() => {
     milliseconds += 1;
     millisecondsEl.textContent =
       milliseconds <= 9 ? "0" + milliseconds : milliseconds;
@@ -38,4 +38,9 @@ startBtn.addEventListener("click", () => {
     secondsEl.textContent = seconds <= 9 ? "0" + seconds : seconds;
     minutesEl.textContent = minutes <= 9 ? "0" + minutes : minutes;
   }, 10);
+
+  stopBtn.addEventListener("click", () => {
+    clearInterval(intervalId);
+    display.classList.remove("time-slip");
+  });
 });
