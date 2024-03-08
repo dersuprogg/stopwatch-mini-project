@@ -56,3 +56,15 @@ startBtn.addEventListener("click", () => {
     { once: true }
   );
 });
+
+resetBtn.addEventListener("click", () => {
+  minutes = 0;
+  seconds = 0;
+  milliseconds = 0;
+  while (lapsUl.firstElementChild) {
+    lapsUl.firstElementChild.remove();
+  }
+  minutesEl.innerHTML = "00";
+  secondsEl.textContent = "00";
+  millisecondsEl.textContent = "00";
+});
