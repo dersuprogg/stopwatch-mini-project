@@ -12,6 +12,7 @@ const lapsUl = document.querySelector(".laps");
 let minutes = 0;
 let seconds = 0;
 let milliseconds = 0;
+let lapCount = 0;
 
 function makePad(str, pad, length = 2) {
   while (str.length !== length) {
@@ -43,6 +44,7 @@ startBtn.addEventListener("click", () => {
   stopBtn.addEventListener(
     "click",
     () => {
+      lapCount++;
       clearInterval(intervalId);
       display.classList.remove("time-slip");
       const lap = document.createElement("li");
@@ -50,7 +52,7 @@ startBtn.addEventListener("click", () => {
       const lapMinutes = minutes <= 9 ? "0" + minutes : minutes;
       const lapMilliseconds =
         milliseconds <= 9 ? "0" + milliseconds : milliseconds;
-      lap.textContent = `${lapMinutes} : ${lapSeconds},${lapMilliseconds}`;
+      lap.innerHTML = `LAP ${lapCount} &#8594 ${lapMinutes} : ${lapSeconds},${lapMilliseconds}`;
       lapsUl.append(lap);
     },
     { once: true }
@@ -61,6 +63,7 @@ resetBtn.addEventListener("click", () => {
   minutes = 0;
   seconds = 0;
   milliseconds = 0;
+  lapCount = 0;
   while (lapsUl.firstElementChild) {
     lapsUl.firstElementChild.remove();
   }
