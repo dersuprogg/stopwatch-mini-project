@@ -107,5 +107,5 @@ h6 {
 }
 
 .time-slip {
-  animation: timSlips 0.5s infinite alternate;
+  animation: timeSlips 0.5s infinite alternate;
 }
